@@ -1,0 +1,3 @@
+[submodule "loomio"]
+	path = loomio
+	url = https://github.com/loomio/loomio
