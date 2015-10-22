@@ -141,7 +141,6 @@ const pkgdef :Spk.PackageDefinition = (
     # here are only to tell it where to find files that the app wants.
     searchPath = [
       (sourcePath = "/home/vagrant/scratch", packagePath = "opt/app/loomio"),
-      (sourcePath = "/home/vagrant/node", packagePath = "usr/bin/node"),
       ( sourcePath = "." ),  # Search this directory first.
       ( sourcePath = "/",    # Then search the system root directory.
         hidePaths = [ "home", "proc", "sys",
@@ -157,7 +156,10 @@ const pkgdef :Spk.PackageDefinition = (
   # `spk dev` will write a list of all the files your app uses to this file.
   # You should review it later, before shipping your app.
 
-  alwaysInclude = ["usr/local/lib/bundle"],
+  alwaysInclude = [
+    "usr/local/lib/bundle",
+    "usr/bin/nodejs",
+  ],
   # Fill this list with more names of files or directories that should be
   # included in your package, even if not listed in sandstorm-files.list.
   # Use this to force-include stuff that you know you need but which may
