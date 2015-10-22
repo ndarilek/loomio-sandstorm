@@ -141,6 +141,7 @@ const pkgdef :Spk.PackageDefinition = (
     # here are only to tell it where to find files that the app wants.
     searchPath = [
       (sourcePath = "/home/vagrant/scratch", packagePath = "opt/app/loomio"),
+      (sourcePath = "/home/vagrant/node", packagePath = "usr/bin/node"),
       ( sourcePath = "." ),  # Search this directory first.
       ( sourcePath = "/",    # Then search the system root directory.
         hidePaths = [ "home", "proc", "sys",
@@ -156,7 +157,7 @@ const pkgdef :Spk.PackageDefinition = (
   # `spk dev` will write a list of all the files your app uses to this file.
   # You should review it later, before shipping your app.
 
-  alwaysInclude = ["/usr/local/lib/bundle"],
+  alwaysInclude = ["usr/local/lib/bundle"],
   # Fill this list with more names of files or directories that should be
   # included in your package, even if not listed in sandstorm-files.list.
   # Use this to force-include stuff that you know you need but which may
@@ -180,14 +181,14 @@ const pkgdef :Spk.PackageDefinition = (
           description = (defaultText = "administrators have full access to the grain's data and settings."),
         ),
         (
-          title = (defaultText = "viewer"),
+          title = (defaultText = "user"),
           permissions  = [false],
-          verbPhrase = (defaultText = "can view the instance"),
+          verbPhrase = (defaultText = "can use the instance"),
           description = (defaultText = "viewers can access the instance without administrator privileges."),
         ),
       ],
     ),
-  #  #apiPath = "/api",
+  apiPath = "/api",
   #  # Apps can export an API to the world.  The API is to be used primarily by Javascript
   #  # code and native apps, so it can't serve out regular HTML to browsers.  If a request
   #  # comes in to your app's API, sandstorm-http-bridge will prefix the request's path with

@@ -21,4 +21,5 @@ mkdir /usr/local/lib/bundle
 systemctl stop postgresql
 systemctl disable postgresql
 cp /opt/app/postgresql.conf /opt/app/pg_hba.conf /etc/postgresql/9.4/main
-chown -R 1000.1000 /var/lib/postgresql /var/run/postgresql /etc/postgresql /usr/local/lib/bundle
+mkdir -p /var/files
+chown -R 1000.1000 /var/lib/postgresql /var/run/postgresql /etc/postgresql /usr/local/lib/bundle /var/files
