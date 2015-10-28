@@ -171,7 +171,6 @@ opt/app/loomio/app/controllers/email_actions_controller.rb
 opt/app/loomio/app/controllers/explore_controller.rb
 opt/app/loomio/app/controllers/group_base_controller.rb
 opt/app/loomio/app/controllers/groups
-opt/app/loomio/app/controllers/groups/group_setup_controller.rb
 opt/app/loomio/app/controllers/groups/manage_membership_requests_controller.rb
 opt/app/loomio/app/controllers/groups/membership_requests_controller.rb
 opt/app/loomio/app/controllers/groups/memberships_controller.rb
@@ -911,7 +910,6 @@ opt/app/loomio/log/production.log
 opt/app/loomio/public/404.html
 opt/app/loomio/public/500.html
 opt/app/loomio/public/assets
-opt/app/loomio/public/assets/.sprockets-manifest-efd7cf3e661a2820866198664454181e.json
 opt/app/loomio/public/assets/active_admin-7fbd47f84acbe1ce9606300366199d7d661ea52a712c6f0fedaa98bde59f23fa.js
 opt/app/loomio/public/assets/active_admin/datepicker/datepicker-input-icon-d9c2bb73769af777c8a71720d29741f3a499aebd5a043e9a119bd0d9597aed47.png
 opt/app/loomio/public/assets/active_admin/orderable-29374dbb55b0012d78a37c614d573bb3474f0779849b478a147d0f1845ca6617.png
@@ -1351,9 +1349,6 @@ usr/local/lib/bundle/ruby/2.2.0/extensions/x86_64-linux/2.2.0-static/redcarpet-3
 usr/local/lib/bundle/ruby/2.2.0/extensions/x86_64-linux/2.2.0-static/rinku-1.7.3
 usr/local/lib/bundle/ruby/2.2.0/extensions/x86_64-linux/2.2.0-static/rinku-1.7.3/gem.build_complete
 usr/local/lib/bundle/ruby/2.2.0/extensions/x86_64-linux/2.2.0-static/rinku-1.7.3/rinku.so
-usr/local/lib/bundle/ruby/2.2.0/extensions/x86_64-linux/2.2.0-static/rmagick-2.15.0
-usr/local/lib/bundle/ruby/2.2.0/extensions/x86_64-linux/2.2.0-static/rmagick-2.15.0/RMagick2.so
-usr/local/lib/bundle/ruby/2.2.0/extensions/x86_64-linux/2.2.0-static/rmagick-2.15.0/gem.build_complete
 usr/local/lib/bundle/ruby/2.2.0/extensions/x86_64-linux/2.2.0-static/thin-1.6.3
 usr/local/lib/bundle/ruby/2.2.0/extensions/x86_64-linux/2.2.0-static/thin-1.6.3/gem.build_complete
 usr/local/lib/bundle/ruby/2.2.0/extensions/x86_64-linux/2.2.0-static/thin-1.6.3/thin_parser.so
@@ -5151,14 +5146,6 @@ usr/local/lib/bundle/ruby/2.2.0/gems/responders-2.1.0/lib/responders/locales
 usr/local/lib/bundle/ruby/2.2.0/gems/responders-2.1.0/lib/responders/locales/en.yml
 usr/local/lib/bundle/ruby/2.2.0/gems/rinku-1.7.3/lib
 usr/local/lib/bundle/ruby/2.2.0/gems/rinku-1.7.3/lib/rinku.rb
-usr/local/lib/bundle/ruby/2.2.0/gems/rmagick-2.15.0/deprecated
-usr/local/lib/bundle/ruby/2.2.0/gems/rmagick-2.15.0/ext
-usr/local/lib/bundle/ruby/2.2.0/gems/rmagick-2.15.0/ext/RMagick
-usr/local/lib/bundle/ruby/2.2.0/gems/rmagick-2.15.0/lib
-usr/local/lib/bundle/ruby/2.2.0/gems/rmagick-2.15.0/lib/rmagick
-usr/local/lib/bundle/ruby/2.2.0/gems/rmagick-2.15.0/lib/rmagick.rb
-usr/local/lib/bundle/ruby/2.2.0/gems/rmagick-2.15.0/lib/rmagick_internal.rb
-usr/local/lib/bundle/ruby/2.2.0/gems/rmagick-2.15.0/lib/rvg
 usr/local/lib/bundle/ruby/2.2.0/gems/roadie-3.0.5/lib
 usr/local/lib/bundle/ruby/2.2.0/gems/roadie-3.0.5/lib/roadie
 usr/local/lib/bundle/ruby/2.2.0/gems/roadie-3.0.5/lib/roadie.rb
@@ -5894,7 +5881,6 @@ usr/local/lib/bundle/ruby/2.2.0/specifications/referer-parser-0.3.0.gemspec
 usr/local/lib/bundle/ruby/2.2.0/specifications/request_store-1.1.0.gemspec
 usr/local/lib/bundle/ruby/2.2.0/specifications/responders-2.1.0.gemspec
 usr/local/lib/bundle/ruby/2.2.0/specifications/rinku-1.7.3.gemspec
-usr/local/lib/bundle/ruby/2.2.0/specifications/rmagick-2.15.0.gemspec
 usr/local/lib/bundle/ruby/2.2.0/specifications/roadie-3.0.5.gemspec
 usr/local/lib/bundle/ruby/2.2.0/specifications/roadie-rails-1.0.6.gemspec
 usr/local/lib/bundle/ruby/2.2.0/specifications/ruby-progressbar-1.7.5.gemspec

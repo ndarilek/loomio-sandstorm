@@ -67,4 +67,6 @@ if [ $(cat $VERSION_FILE) != $VERSION ]; then
   echo $VERSION >$VERSION_FILE
 fi
 
+while ( : ) ; do bundle exec rake loomio:close_lapsed_motions ; sleep 600 ; done &
+bundle exec rake jobs:work &
 bundle exec rails server -b 127.0.0.1 -p 8000
