@@ -37,7 +37,7 @@ export RAILS_ENV=production
 export SECRET_COOKIE_TOKEN=`base64 /dev/urandom | head -c 30`
 export DEVISE_SECRET=`base64 /dev/urandom | head -c 30`
 export CANONICAL_HOST=Sandstorm
-export VERSION=0
+export VERSION=1
 export VERSION_FILE=/var/version
 
 cd /opt/app

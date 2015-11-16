@@ -138,7 +138,6 @@ opt/app/loomio/app/controllers/admin/stats_controller.rb
 opt/app/loomio/app/controllers/angular_controller.rb
 opt/app/loomio/app/controllers/api
 opt/app/loomio/app/controllers/api/attachments_controller.rb
-opt/app/loomio/app/controllers/api/base_controller.rb
 opt/app/loomio/app/controllers/api/comments_controller.rb
 opt/app/loomio/app/controllers/api/contact_messages_controller.rb
 opt/app/loomio/app/controllers/api/contacts_controller.rb
@@ -191,6 +190,7 @@ opt/app/loomio/app/controllers/redirect_controller.rb
 opt/app/loomio/app/controllers/robots_controller.rb
 opt/app/loomio/app/controllers/searches_controller.rb
 opt/app/loomio/app/controllers/start_group_controller.rb
+opt/app/loomio/app/controllers/subscriptions_controller.rb
 opt/app/loomio/app/controllers/theme_assets_controller.rb
 opt/app/loomio/app/controllers/translations_controller.rb
 opt/app/loomio/app/controllers/users
@@ -223,6 +223,7 @@ opt/app/loomio/app/extras/discussion_items/new_discussion.rb
 opt/app/loomio/app/extras/discussion_items/new_motion.rb
 opt/app/loomio/app/extras/discussion_items/new_vote.rb
 opt/app/loomio/app/extras/email_markdown_renderer.rb
+opt/app/loomio/app/extras/example_content.rb
 opt/app/loomio/app/extras/groups_tree.rb
 opt/app/loomio/app/extras/inbox.rb
 opt/app/loomio/app/extras/invitation_parser.rb
@@ -251,7 +252,6 @@ opt/app/loomio/app/extras/queries/visible_autocompletes.rb
 opt/app/loomio/app/extras/queries/visible_comments.rb
 opt/app/loomio/app/extras/queries/visible_discussions.rb
 opt/app/loomio/app/extras/queries/visible_invitable_memberships.rb
-opt/app/loomio/app/extras/queries/visible_memberships.rb
 opt/app/loomio/app/extras/queries/visible_motions.rb
 opt/app/loomio/app/extras/queries/visible_search_results.rb
 opt/app/loomio/app/extras/send_missed_yesterday_email.rb
@@ -375,6 +375,7 @@ opt/app/loomio/app/models/organisation_visit.rb
 opt/app/loomio/app/models/permitted_params.rb
 opt/app/loomio/app/models/search_result.rb
 opt/app/loomio/app/models/search_vector.rb
+opt/app/loomio/app/models/site_settings.rb
 opt/app/loomio/app/models/subscription.rb
 opt/app/loomio/app/models/theme.rb
 opt/app/loomio/app/models/translation.rb
@@ -391,6 +392,7 @@ opt/app/loomio/app/models/webhooks/slack/motion_closing_soon.rb
 opt/app/loomio/app/models/webhooks/slack/motion_outcome_created.rb
 opt/app/loomio/app/models/webhooks/slack/motion_outcome_updated.rb
 opt/app/loomio/app/models/webhooks/slack/new_motion.rb
+opt/app/loomio/app/models/webhooks/slack/new_vote.rb
 opt/app/loomio/app/queries
 opt/app/loomio/app/queries/thread_search_query.rb
 opt/app/loomio/app/queries/users_by_volume_query.rb
@@ -428,6 +430,7 @@ opt/app/loomio/app/serializers/vote_serializer.rb
 opt/app/loomio/app/serializers/webhook_serializer.rb
 opt/app/loomio/app/services
 opt/app/loomio/app/services/attachment_service.rb
+opt/app/loomio/app/services/chargify_service.rb
 opt/app/loomio/app/services/cohort_service.rb
 opt/app/loomio/app/services/comment_service.rb
 opt/app/loomio/app/services/contact_message_service.rb
@@ -446,6 +449,7 @@ opt/app/loomio/app/services/move_discussion_service.rb
 opt/app/loomio/app/services/network_membership_request_service.rb
 opt/app/loomio/app/services/notification_service.rb
 opt/app/loomio/app/services/start_group_service.rb
+opt/app/loomio/app/services/subscription_service.rb
 opt/app/loomio/app/services/thread_search_service.rb
 opt/app/loomio/app/services/translation_service.rb
 opt/app/loomio/app/services/user_service.rb
@@ -462,6 +466,7 @@ opt/app/loomio/app/views/admin/group_requests
 opt/app/loomio/app/views/admin/stats
 opt/app/loomio/app/views/admin/themes
 opt/app/loomio/app/views/angular
+opt/app/loomio/app/views/angular/_chargify.html.haml
 opt/app/loomio/app/views/angular/_google_analytics.html.haml
 opt/app/loomio/app/views/angular/_intercom.html.haml
 opt/app/loomio/app/views/api
@@ -654,6 +659,7 @@ opt/app/loomio/config/locales/client.eo.yml
 opt/app/loomio/config/locales/client.es.yml
 opt/app/loomio/config/locales/client.fa-IR.yml
 opt/app/loomio/config/locales/client.fi.yml
+opt/app/loomio/config/locales/client.fr-BE.yml
 opt/app/loomio/config/locales/client.fr.yml
 opt/app/loomio/config/locales/client.ga-IE.yml
 opt/app/loomio/config/locales/client.gl.yml
@@ -718,6 +724,7 @@ opt/app/loomio/config/locales/fallback.pt.yml
 opt/app/loomio/config/locales/fallback.zh-hk.yml
 opt/app/loomio/config/locales/fallback.zh.yml
 opt/app/loomio/config/locales/fi.yml
+opt/app/loomio/config/locales/fr-BE.yml
 opt/app/loomio/config/locales/fr.yml
 opt/app/loomio/config/locales/frontpage.an.yml
 opt/app/loomio/config/locales/frontpage.ar.yml
@@ -736,6 +743,7 @@ opt/app/loomio/config/locales/frontpage.eo.yml
 opt/app/loomio/config/locales/frontpage.es.yml
 opt/app/loomio/config/locales/frontpage.fa-IR.yml
 opt/app/loomio/config/locales/frontpage.fi.yml
+opt/app/loomio/config/locales/frontpage.fr-BE.yml
 opt/app/loomio/config/locales/frontpage.fr.yml
 opt/app/loomio/config/locales/frontpage.ga-IE.yml
 opt/app/loomio/config/locales/frontpage.gl.yml
@@ -798,6 +806,7 @@ opt/app/loomio/config/locales/help.eo.yml
 opt/app/loomio/config/locales/help.es.yml
 opt/app/loomio/config/locales/help.fa-IR.yml
 opt/app/loomio/config/locales/help.fi.yml
+opt/app/loomio/config/locales/help.fr-BE.yml
 opt/app/loomio/config/locales/help.fr.yml
 opt/app/loomio/config/locales/help.ga-IE.yml
 opt/app/loomio/config/locales/help.gl.yml
@@ -910,6 +919,7 @@ opt/app/loomio/log/production.log
 opt/app/loomio/public/404.html
 opt/app/loomio/public/500.html
 opt/app/loomio/public/assets
+opt/app/loomio/public/assets/.sprockets-manifest-62f030afc6edf6d200a0a294ab8f92dc.json
 opt/app/loomio/public/assets/active_admin-7fbd47f84acbe1ce9606300366199d7d661ea52a712c6f0fedaa98bde59f23fa.js
 opt/app/loomio/public/assets/active_admin/datepicker/datepicker-input-icon-d9c2bb73769af777c8a71720d29741f3a499aebd5a043e9a119bd0d9597aed47.png
 opt/app/loomio/public/assets/active_admin/orderable-29374dbb55b0012d78a37c614d573bb3474f0779849b478a147d0f1845ca6617.png
