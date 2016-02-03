@@ -10,7 +10,6 @@ VM_NAME = File.basename(File.dirname(File.dirname(__FILE__))) + "_sandstorm_#{Ti
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  # We base ourselves off Debian Jessie
   config.vm.box = "sandstorm/debian-jessie64"
 
   if Vagrant.has_plugin?("vagrant-vbguest") then
@@ -33,8 +32,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Then, do stack-specific and app-specific setup.
   config.vm.provision "shell", inline: "sudo bash /opt/app/.sandstorm/setup.sh", keep_color: true
 
-  config.vm.provision "shell", inline: "chown -R vagrant.vagrant /var/run/postgresql", keep_color: true, privileged: true, run: :always
-  
   # Shared folders are configured per-provider since vboxsf can't handle >4096 open files,
   # NFS requires privilege escalation every time you bring a VM up,
   # and 9p is only available on libvirt.
@@ -72,7 +69,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     cpus = 1
   end
   if total_kB_ram.nil? or total_kB_ram < 2048000
-    assign_ram_mb = 2048
+    assign_ram_mb = 512
   else
     assign_ram_mb = (total_kB_ram / 1024 / 4)
   end
@@ -82,7 +79,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.memory = assign_ram_mb
     vb.name = VM_NAME
 
-    override.vm.synced_folder "..", "/opt/app", type: :rsync
+    override.vm.synced_folder "..", "/opt/app"
     override.vm.synced_folder ENV["HOME"] + "/.sandstorm", "/host-dot-sandstorm"
     override.vm.synced_folder "..", "/vagrant"
   end
