@@ -57,7 +57,7 @@ const pkgdef :Spk.PackageDefinition = (
       website = "https://loomio.org",
       # This should be the app's main website url.
 
-      codeUrl = "https://dev.thewordnerd.info/nolan/loomio-sandstorm",
+      codeUrl = "https://github.com/ndarilek/loomio-sandstorm",
       # URL of the app's source code repository, e.g. a GitHub URL.
       # Required if you specify a license requiring redistributing code, but optional otherwise.
 
