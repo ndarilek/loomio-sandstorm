@@ -1,5 +1,4 @@
 #!/bin/bash
-# set -euo pipefail
 # This script is run in the VM each time you run `vagrant-spk dev`.  This is
 # the ideal place to invoke anything which is normally part of your app's build
 # process - transforming the code in your repository into the collection of files
@@ -23,11 +22,19 @@ export RAILS_ENV=production
 export DEVISE_SECRET=`base64 /dev/urandom | head -c 30`
 export PATH="$RBENV_ROOT/bin:$PATH"
 eval "$(rbenv init -)"
+set -euo pipefail
 cd /opt/app/loomio
 bundle install --path /usr/local/lib/bundle --without test development
 cp /etc/postgresql/9.4/main/*.conf /var/lib/postgresql/9.4/main
 /usr/lib/postgresql/9.4/bin/postgres -D /var/lib/postgresql/9.4/main ||true &
+cp /opt/app/database.yml /opt/app/loomio/config
 rake db:setup
+cd lineman
+npm install
+bower install --config.interactive=false
+lineman build
+cp -R dist/* ../public/
+cd ..
 echo Precompiling assets.
 rake assets:precompile
 echo Done.

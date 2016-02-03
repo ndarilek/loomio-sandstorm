@@ -1,5 +1,5 @@
 #!/bin/bash
-# set -euo pipefail
+set -euo pipefail
 # This script is run every time an instance of our app - aka grain - starts up.
 # This is the entry point for your application both when a grain is first launched
 # and when a grain resumes after being previously shut down.
@@ -26,18 +26,15 @@
 #     to think about such things.
 #   * Launching other daemons your app needs (e.g. mysqld, redis-server, etc.)
 
-# By default, this script does nothing.  You'll have to modify it as
-# appropriate for your application.
-
 export HOME=/tmp
 export PGDATA=/var/lib/postgresql
-export RBENV_VERSION=2.2.2
+export RBENV_VERSION=2.2.3
 export PATH=/usr/lib/postgresql/9.4/bin:/usr/local/rbenv/versions/$RBENV_VERSION/bin:$PATH
 export RAILS_ENV=production
 export SECRET_COOKIE_TOKEN=`base64 /dev/urandom | head -c 30`
 export DEVISE_SECRET=`base64 /dev/urandom | head -c 30`
 export CANONICAL_HOST=Sandstorm
-export VERSION=1
+export VERSION=0
 export VERSION_FILE=/var/version
 
 cd /opt/app
