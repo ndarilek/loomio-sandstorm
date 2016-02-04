@@ -10,13 +10,22 @@ apt-get update
 export DEBIAN_FRONTEND=noninteractive
 apt-get dist-upgrade -y
 apt-get install -y git postgresql postgresql-contrib libpq-dev g++ imagemagick libmagickcore-6.q16-dev libmagickwand-6-headers pkg-config nodejs
-git clone https://github.com/sstephenson/rbenv.git /usr/local/rbenv
-git clone https://github.com/sstephenson/ruby-build.git /usr/local/rbenv/plugins/ruby-build
+
+if [ ! -e /usr/local/rbenv ]; then
+  git clone https://github.com/sstephenson/rbenv.git /usr/local/rbenv
+fi
+
+if [ ! -e /usr/local/rbenv/plugins/ruby-build ]; then
+  git clone https://github.com/sstephenson/ruby-build.git /usr/local/rbenv/plugins/ruby-build
+fi
+
 export RBENV_ROOT=/usr/local/rbenv
 export PATH="$RBENV_ROOT/bin:$PATH"
 export RBENV_VERSION=2.2.3
 eval "$(rbenv init -)"
-rbenv install $RBENV_VERSION
+if [ ! -e /usr/local/rbenv/versions/$RBENV_VERSION ]; then
+  rbenv install $RBENV_VERSION
+fi
 gem install bundler uuid
 npm install -g bower lineman
 su postgres -c "createuser -s vagrant"
