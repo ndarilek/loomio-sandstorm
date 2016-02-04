@@ -7,6 +7,7 @@ set -euo pipefail
 
 curl -sL https://deb.nodesource.com/setup_0.10 | sudo -E bash -
 apt-get update
+export DEBIAN_FRONTEND=noninteractive
 apt-get dist-upgrade -y
 apt-get install -y git postgresql postgresql-contrib libpq-dev g++ imagemagick libmagickcore-6.q16-dev libmagickwand-6-headers pkg-config nodejs
 git clone https://github.com/sstephenson/rbenv.git /usr/local/rbenv
